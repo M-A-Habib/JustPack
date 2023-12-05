@@ -1,4 +1,4 @@
-package com.justpack;
+package com.justpack.application;
 
 import io.micronaut.runtime.Micronaut;
 

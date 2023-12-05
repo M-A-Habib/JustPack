@@ -1,3 +1,9 @@
-micronaut:
-  application:
-    name: justPack
+micronaut :
+  application :
+    name : just-pack-core
+  http :
+    services :
+      openai :
+        url : https://api.openai.com/v1
+        token : Bearer ${OPENAI_TOKEN}
+        read-timeout: 300s

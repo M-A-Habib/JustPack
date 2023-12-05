@@ -12,20 +12,33 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor("org.projectlombok:lombok")
     annotationProcessor("io.micronaut:micronaut-http-validation")
     annotationProcessor("io.micronaut.serde:micronaut-serde-processor")
-    implementation("io.micronaut.serde:micronaut-serde-jackson")
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
     compileOnly("io.micronaut:micronaut-http-client")
-    compileOnly("org.projectlombok:lombok")
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+
+    implementation("io.micronaut.serde:micronaut-serde-jackson")
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+    implementation("io.micronaut:micronaut-http-client")
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '1.17'
+    implementation "io.reactivex.rxjava3:rxjava:3.x.y"
+    implementation("io.micronaut.reactor:micronaut-reactor")
+    implementation("io.micronaut.reactor:micronaut-reactor-http-client")
+
     runtimeOnly("ch.qos.logback:logback-classic")
-    runtimeOnly("org.yaml:snakeyaml")
+
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.30'
+
     testImplementation("io.micronaut:micronaut-http-client")
 }
 
 
 application {
-    mainClass.set("com.justpack.Application")
+    mainClass.set("com.justpack.application.Application")
 }
 java {
     sourceCompatibility = JavaVersion.toVersion("21")
