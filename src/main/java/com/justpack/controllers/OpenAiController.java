@@ -1,5 +1,6 @@
 package com.justpack.controllers;
 
+import com.justpack.models.requestBodies.GenerateVacationPromptRequestBody;
 import com.justpack.services.clients.OpenAiService;
 import io.micronaut.http.annotation.Body;
 import io.micronaut.http.annotation.Controller;
@@ -16,5 +17,10 @@ public class OpenAiController {
     @Post("/v1/generate-response")
     public String test(@Body(value = "prompt") String prompt) {
         return openAiService.generateResponse(prompt);
+    }
+
+    @Post("/v1/generate-vacation")
+    public String generateVacation(@Body GenerateVacationPromptRequestBody requestBody) {
+        return openAiService.generateResponse(requestBody.location());
     }
 }

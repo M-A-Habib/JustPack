@@ -8,6 +8,7 @@ import com.justpack.services.clients.OpenAiService;
 import jakarta.inject.Named;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -32,6 +33,8 @@ public class OpenAiServiceImpl implements OpenAiService {
         OpenAiCompletionsResponse response = openAIClient.generateResponse(
                 requestBody
         );
+
+        List<String> something = Arrays.stream(response.choices().get(0).message().content().split("\n")).filter(item -> !item.isEmpty()).toList();
 
         return response.choices().get(0).message().content();
     }
